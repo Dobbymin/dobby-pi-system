@@ -1,3 +1,5 @@
+import { TooltipProvider } from "@/shared";
+
 import { QueryProvider } from "./components";
 
 type Props = {
@@ -5,5 +7,9 @@ type Props = {
 };
 
 export const ApplicationProviders = ({ children }: Props) => {
-  return <QueryProvider>{children}</QueryProvider>;
+  return (
+    <QueryProvider>
+      <TooltipProvider>{children}</TooltipProvider>
+    </QueryProvider>
+  );
 };
