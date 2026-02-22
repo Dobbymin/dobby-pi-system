@@ -42,3 +42,6 @@ yarn-error.log*
 *.iml
 *.iws
 *.ipr
+
+.github/prompts/*.md
+docs
