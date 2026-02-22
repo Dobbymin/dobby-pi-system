@@ -1,4 +1,4 @@
-export const mockServiceLogs: Record<string, string[]> = {
+export const SERVICE_LOG_MOCK_DATA: Record<string, string[]> = {
   "nginx.service": [
     "Jan 15 08:00:01 dobby-pi nginx[1234]: nginx: the configuration file /etc/nginx/nginx.conf syntax is ok",
     "Jan 15 08:00:01 dobby-pi nginx[1234]: nginx: configuration file /etc/nginx/nginx.conf test is successful",

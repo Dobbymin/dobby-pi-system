@@ -1,6 +1,6 @@
 import type { Timer } from "../../model";
 
-export const mockTimers: Timer[] = [
+export const SERVICE_TIMER_MOCK_DATA: Timer[] = [
   {
     name: "apt-daily.timer",
     description: "Daily apt download activities",

@@ -1,6 +1,6 @@
 import type { Socket } from "../../model";
 
-export const mockSockets: Socket[] = [
+export const SERVICE_SOCKET_MOCK_DATA: Socket[] = [
   {
     name: "docker.socket",
     description: "Docker Socket for the API",

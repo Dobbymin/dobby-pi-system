@@ -1,6 +1,6 @@
 import type { Service } from "../../model";
 
-export const mockServices: Service[] = [
+export const SERVICE_MOCK_DATA: Service[] = [
   {
     name: "nginx.service",
     description: "A high performance web server and a reverse proxy server",
