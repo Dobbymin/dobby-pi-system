@@ -5,8 +5,8 @@ import { type ApiResponse, BASE_URL } from "@/shared";
 import { SERVICE_LOG_MOCK_DATA } from "../data";
 
 export const serviceLogHandler = [
-  // GET /services/:name/logs
-  http.get(`/api/${BASE_URL}/services/:name/logs`, async ({ params }) => {
+  // GET /api/services/:name/logs
+  http.get(`${BASE_URL}/api/services/:name/logs`, async ({ params }) => {
     await delay(600);
     const name = params.name as string;
     const logs =

@@ -11,8 +11,8 @@ import { serviceTimerHandler } from "./service-timer.handler";
 const serviceState = new Map(SERVICE_MOCK_DATA.map((s) => [s.name, { ...s }]));
 
 export const serviceHandlers = [
-  // GET /services
-  http.get(`/api/${BASE_URL}/services`, async () => {
+  // GET /api/services
+  http.get(`${BASE_URL}/api/services`, async () => {
     await delay(400);
     const data = Array.from(serviceState.values());
     return HttpResponse.json<ApiResponse<typeof data>>({
@@ -21,8 +21,8 @@ export const serviceHandlers = [
     });
   }),
 
-  // POST /services/:name/start
-  http.post(`/api/${BASE_URL}/services/:name/start`, async ({ params }) => {
+  // POST /api/services/:name/start
+  http.post(`${BASE_URL}/api/services/:name/start`, async ({ params }) => {
     await delay(800);
     const name = params.name as string;
     const service = serviceState.get(name);
@@ -41,8 +41,8 @@ export const serviceHandlers = [
     });
   }),
 
-  // POST /services/:name/stop
-  http.post(`/api/${BASE_URL}/services/:name/stop`, async ({ params }) => {
+  // POST /api/services/:name/stop
+  http.post(`${BASE_URL}/api/services/:name/stop`, async ({ params }) => {
     await delay(800);
     const name = params.name as string;
     const service = serviceState.get(name);
@@ -61,8 +61,8 @@ export const serviceHandlers = [
     });
   }),
 
-  // POST /services/:name/restart
-  http.post(`/api/${BASE_URL}/services/:name/restart`, async ({ params }) => {
+  // POST /api/services/:name/restart
+  http.post(`${BASE_URL}/api/services/:name/restart`, async ({ params }) => {
     await delay(1200);
     const name = params.name as string;
     const service = serviceState.get(name);
@@ -81,8 +81,8 @@ export const serviceHandlers = [
     });
   }),
 
-  // POST /services/:name/enable
-  http.post(`/api/${BASE_URL}/services/:name/enable`, async ({ params }) => {
+  // POST /api/services/:name/enable
+  http.post(`${BASE_URL}/api/services/:name/enable`, async ({ params }) => {
     await delay(500);
     const name = params.name as string;
     const service = serviceState.get(name);
@@ -96,8 +96,8 @@ export const serviceHandlers = [
     });
   }),
 
-  // POST /services/:name/disable
-  http.post(`/api/${BASE_URL}/services/:name/disable`, async ({ params }) => {
+  // POST /api/services/:name/disable
+  http.post(`${BASE_URL}/api/services/:name/disable`, async ({ params }) => {
     await delay(500);
     const name = params.name as string;
     const service = serviceState.get(name);
