@@ -1,11 +1,11 @@
 import { type ApiError, type ApiResponse } from "@/shared/types";
 
-const BASE_URL = import.meta.env.VITE_API_URL ?? "http://localhost:4000/api";
+import { BASE_URL } from "../constants";
 
 async function request<T>(path: string, options?: RequestInit): Promise<ApiResponse<T>> {
   const token = localStorage.getItem("access_token");
 
-  const response = await fetch(`${BASE_URL}${path}`, {
+  const response = await fetch(`${BASE_URL}/api${path}`, {
     ...options,
     headers: {
       "Content-Type": "application/json",
