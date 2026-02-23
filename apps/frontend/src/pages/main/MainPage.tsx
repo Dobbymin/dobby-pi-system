@@ -115,7 +115,7 @@ export default function MainPage() {
             </h3>
             <div className='relative mt-4 size-40'>
               <svg
-                className='size-full -rotate-90'
+                className='size-full -rotate-90 overflow-visible'
                 viewBox='0 0 36 36'
                 xmlns='http://www.w3.org/2000/svg'
               >
