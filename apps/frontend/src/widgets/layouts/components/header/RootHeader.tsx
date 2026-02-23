@@ -1,13 +1,14 @@
-import { Bell, Server } from "lucide-react";
+import Logo from "/logo.webp";
+import { Bell } from "lucide-react";
 
-import { Badge } from "@/shared/components/ui";
+import { Badge } from "@/shared";
 
 export const RootHeader = () => {
   return (
     <header className='sticky top-0 z-50 flex h-14 items-center justify-between border-b border-slate-200 bg-white px-4 dark:border-slate-800 dark:bg-[#0d1117]'>
       {/* Brand */}
       <div className='flex items-center gap-2 text-slate-900 dark:text-white'>
-        <Server className='size-5 text-primary' />
+        <img src={Logo} alt='Dobby Pi System Logo' className='size-10' />
         <span className='text-sm font-bold tracking-tight'>Dobby Pi System</span>
       </div>
 
