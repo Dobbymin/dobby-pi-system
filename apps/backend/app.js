@@ -1,0 +1,60 @@
+import express from 'express';
+
+import cors from 'cors';
+import dotenv from 'dotenv';
+
+import { router } from './src/routes/router.js';
+import { setupSwagger } from './swagger/config.js';
+
+const PORT = process.env.PORT || 8081;
+
+const createApp = async () => {
+  dotenv.config();
+
+  const app = express();
+
+  // json 포맷을 해독하기 위해 사용하는 미들웨어
+  app.use(express.json());
+
+  // x-www-form-urlencoded 포맷을 해독하기 위해 사용하는 미들웨어
+  app.use(express.urlencoded({ extended: false }));
+
+  // cors 설정
+  app.use(
+    cors({
+      credentials: true,
+      exposedHeaders: ['Authorization', 'Refresh-Token'],
+      origin: ['https://debloom.vercel.app', 'http://localhost:5173', 'http://localhost:4173'],
+    })
+  );
+
+  // 메인 페이지
+  app.get('/', (req, res) => {
+    res.send('dobby-pi-system server 입니다.');
+  });
+
+  // API 라우터 등록
+  router(app);
+
+  // Swagger 설정 적용
+  setupSwagger(app);
+
+  // Swagger 파일 디버깅용 임시 라우트
+  app.get('/debug-swagger-files', (req, res) => {
+    const swaggerDir = path.join(process.cwd(), 'swagger');
+    fs.readdir(swaggerDir, (err, files) => {
+      if (err) {
+        return res.status(500).json({ error: 'Failed to read swagger directory', details: err });
+      }
+      res.json({ files });
+    });
+  });
+
+  return app;
+};
+
+createApp().then((app) => {
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+});
