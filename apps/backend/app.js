@@ -6,7 +6,7 @@ import dotenv from 'dotenv';
 import { router } from './src/routes/router.js';
 import { setupSwagger } from './swagger/config.js';
 
-const PORT = process.env.PORT || 8081;
+const PORT = process.env.PORT || 8080;
 
 const createApp = async () => {
   dotenv.config();
