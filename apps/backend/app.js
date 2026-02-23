@@ -24,7 +24,7 @@ const createApp = async () => {
     cors({
       credentials: true,
       exposedHeaders: ['Authorization', 'Refresh-Token'],
-      origin: ['https://debloom.vercel.app', 'http://localhost:5173', 'http://localhost:4173'],
+      origin: ['http://dobbymin.iptime.org', 'https://dobbymin.iptime.org', 'http://localhost:5173'],
     })
   );
 
