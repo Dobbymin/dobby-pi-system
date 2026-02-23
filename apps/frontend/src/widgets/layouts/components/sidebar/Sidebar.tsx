@@ -33,9 +33,9 @@ export function Sidebar() {
   return (
     <aside className='flex h-full w-16 flex-col items-center gap-1 border-r border-slate-200 bg-white py-4 dark:border-slate-800 dark:bg-[#0d1117] md:w-56 md:items-start md:px-3'>
       {/* Logo */}
-      <div className='mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-primary md:w-full md:justify-start md:px-2'>
+      <div className='mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-primary md:w-full'>
         <span className='text-sm font-bold text-white md:text-base'>
-          <span className='hidden md:inline'>Dobby</span>
+          <span className='hidden md:inline'>Dobbymin</span>
           <span className='md:hidden'>D</span>
         </span>
       </div>
