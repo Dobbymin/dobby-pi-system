@@ -2,9 +2,14 @@ import express from 'express';
 
 import { serviceController } from '../apis/services/controller/service.controller.js';
 import { validateGetServicesQuery, validateServiceName } from '../apis/services/validator/service.validator.js';
+import { systemController } from '../apis/system/controller/system.controller.js';
 
 export const router = (app) => {
   const apiRouter = express.Router();
+
+  // ── System ────────────────────────────────────────────────
+  apiRouter.get('/system/info', systemController.getInfo);
+  apiRouter.get('/system/metrics', systemController.getMetrics);
 
   // ── Services ──────────────────────────────────────────────
   // 고정 경로를 동적 경로보다 먼저 등록
