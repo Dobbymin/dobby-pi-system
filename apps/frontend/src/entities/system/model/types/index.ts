@@ -24,10 +24,13 @@ export type DiskInfo = {
   device: string;
   mountPoint: string;
   fsType: string;
+  label?: string;
   total: number;
   used: number;
   free: number;
   usagePercent: number;
+  readSpeed?: number;
+  writeSpeed?: number;
 };
 
 export type SystemInfo = {
@@ -39,6 +42,7 @@ export type SystemInfo = {
   platform: string;
   distro: string;
   connectedUsers: number;
+  ipAddress?: string;
 };
 
 export type SystemMetrics = {
