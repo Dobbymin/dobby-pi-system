@@ -24,7 +24,7 @@ const createApp = async () => {
     cors({
       credentials: true,
       exposedHeaders: ['Authorization', 'Refresh-Token'],
-      origin: ['http://dobbymin.iptime.org', 'https://dobbymin.iptime.org', 'http://localhost:5173'],
+      origin: ['http://system.dobbymin.cloud', 'https://system.dobbymin.cloud', 'http://localhost:5173'],
     })
   );
 
