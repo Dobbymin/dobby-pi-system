@@ -1,40 +1,51 @@
-import { Card } from "@/shared";
+import { RadialBar, RadialBarChart } from "recharts";
+
+import { Card, type ChartConfig, ChartContainer } from "@/shared";
 
 type Props = {
   cpuUsage?: number;
 };
 
+const chartConfig = {
+  load: {
+    label: "CPU Load",
+    color: "var(--color-cyan-500)",
+  },
+  track: {
+    label: "Track",
+    color: "var(--color-slate-100)",
+  },
+} satisfies ChartConfig;
+
 export const CpuLoadInfoCard = ({ cpuUsage }: Props) => {
+  const value = cpuUsage ?? 0;
+
+  const chartData = [
+    { name: "track", value: 100, fill: "var(--color-track)" },
+    { name: "load", value, fill: "var(--color-load)" },
+  ];
+
   return (
     <Card className='relative flex flex-col items-center justify-center lg:col-span-4'>
       <h3 className='absolute left-6 top-6 text-sm font-medium uppercase tracking-wider text-slate-500 dark:text-slate-400'>
         CPU Load
       </h3>
       <div className='relative mt-4 size-40'>
-        <svg
-          className='size-full -rotate-90'
-          viewBox='0 0 36 36'
-          xmlns='http://www.w3.org/2000/svg'
-        >
-          <path
-            className='text-slate-100 dark:text-slate-700'
-            d='M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831'
-            fill='none'
-            stroke='currentColor'
-            strokeWidth='3'
-          />
-          <path
-            className='text-cyan-500'
-            d='M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831'
-            fill='none'
-            stroke='currentColor'
-            strokeDasharray={`${cpuUsage ?? 0}, 100`}
-            strokeWidth='3'
-          />
-        </svg>
+        <ChartContainer config={chartConfig} className='size-full'>
+          <RadialBarChart
+            data={chartData}
+            innerRadius={52}
+            outerRadius={72}
+            startAngle={90}
+            endAngle={-270}
+            barSize={12}
+          >
+            <RadialBar dataKey='value' background={false} isAnimationActive={true} />
+          </RadialBarChart>
+        </ChartContainer>
         <div className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform text-center'>
           <span className='block text-3xl font-bold text-slate-900 dark:text-white'>
-            {cpuUsage ? `${cpuUsage}%` : "—"}
+            {cpuUsage !== undefined ? `${cpuUsage}%` : "—"}
           </span>
           <span className='text-xs font-medium text-slate-500 dark:text-slate-400'>Avg Load</span>
         </div>
@@ -49,7 +60,7 @@ export const CpuLoadInfoCard = ({ cpuUsage }: Props) => {
           <span className='text-slate-500 dark:text-slate-400'>System</span>
         </div>
         <div className='flex items-center gap-1'>
-          <div className='size-2 rounded-full bg-slate-700' />
+          <div className='size-2 rounded-full bg-slate-700 dark:bg-slate-300' />
           <span className='text-slate-500 dark:text-slate-400'>Idle</span>
         </div>
       </div>

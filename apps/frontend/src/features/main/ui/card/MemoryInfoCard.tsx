@@ -1,4 +1,6 @@
-import { Card } from "@/shared";
+import { Cell, Pie, PieChart } from "recharts";
+
+import { Card, type ChartConfig, ChartContainer } from "@/shared";
 
 import { formatGB } from "../../utils";
 
@@ -10,46 +12,58 @@ type Props = {
   cachedPct: number;
 };
 
+const chartConfig = {
+  used: {
+    label: "Used",
+    color: "var(--color-primary)",
+  },
+  cached: {
+    label: "Cached",
+    color: "#a855f7",
+  },
+  free: {
+    label: "Free",
+    color: "var(--color-slate-100)",
+  },
+} satisfies ChartConfig;
+
 export const MemoryInfoCard = ({ total, used, cached, usedPct, cachedPct }: Props) => {
+  const freePct = Math.max(0, 100 - usedPct - cachedPct);
+
+  const chartData = [
+    { name: "used", value: usedPct },
+    { name: "cached", value: cachedPct },
+    { name: "free", value: freePct },
+  ];
+
+  const COLORS = [chartConfig.used.color, chartConfig.cached.color, "var(--color-slate-100)"];
+
   return (
     <Card className='relative flex flex-col items-center justify-center lg:col-span-4'>
       <h3 className='absolute left-6 top-6 text-sm font-medium uppercase tracking-wider text-slate-500 dark:text-slate-400'>
         Memory
       </h3>
       <div className='relative mt-4 size-40'>
-        <svg
-          className='size-full -rotate-90 overflow-visible'
-          viewBox='0 0 36 36'
-          xmlns='http://www.w3.org/2000/svg'
-        >
-          {/* Track */}
-          <path
-            className='text-slate-100 dark:text-slate-700'
-            d='M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831'
-            fill='none'
-            stroke='currentColor'
-            strokeWidth='6'
-          />
-          {/* Used */}
-          <path
-            className='text-primary'
-            d='M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831'
-            fill='none'
-            stroke='currentColor'
-            strokeDasharray={`${usedPct}, 100`}
-            strokeWidth='6'
-          />
-          {/* Cached */}
-          <path
-            className='text-purple-500'
-            d='M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831'
-            fill='none'
-            stroke='currentColor'
-            strokeDasharray={`${cachedPct}, 100`}
-            strokeDashoffset={`-${usedPct}`}
-            strokeWidth='6'
-          />
-        </svg>
+        <ChartContainer config={chartConfig} className='size-full'>
+          <PieChart>
+            <Pie
+              data={chartData}
+              cx='50%'
+              cy='50%'
+              innerRadius={52}
+              outerRadius={72}
+              startAngle={90}
+              endAngle={-270}
+              dataKey='value'
+              strokeWidth={0}
+              isAnimationActive={true}
+            >
+              {chartData.map((_, index) => (
+                <Cell key={`cell-${index}`} fill={COLORS[index]} />
+              ))}
+            </Pie>
+          </PieChart>
+        </ChartContainer>
         <div className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform text-center'>
           <span className='block text-3xl font-bold text-slate-900 dark:text-white'>
             {used !== undefined ? formatGB(used) : "—"}
