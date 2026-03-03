@@ -3,7 +3,7 @@ import * as React from "react";
 import { type VariantProps, cva } from "class-variance-authority";
 import { Tabs as TabsPrimitive } from "radix-ui";
 
-import { cn } from "@/shared/utils/index";
+import { cn } from "../../utils";
 
 function Tabs({
   className,

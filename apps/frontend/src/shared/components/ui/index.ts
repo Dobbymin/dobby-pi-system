@@ -7,6 +7,7 @@ export * from "./input";
 export * from "./progress";
 export * from "./scroll-area";
 export * from "./select";
+export * from "./skeleton";
 export * from "./switch";
 export * from "./table";
 export * from "./tabs";
