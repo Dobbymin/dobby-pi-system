@@ -4,7 +4,6 @@
  */
 
 const rand = (min, max) => Math.random() * (max - min) + min;
-const randInt = (min, max) => Math.floor(rand(min, max));
 
 export const generateSystemMetricsMock = () => {
   const cpuUsage = rand(5, 55);
