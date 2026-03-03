@@ -5,7 +5,7 @@ import { Sidebar } from "../components/sidebar";
 
 export default function RootLayout() {
   return (
-    <div className='flex h-screen flex-col overflow-hidden bg-slate-50 dark:bg-[#0d1117]'>
+    <div className='flex h-dvh flex-col overflow-hidden bg-slate-50 dark:bg-[#0d1117]'>
       <RootHeader />
       <div className='flex flex-1 overflow-hidden'>
         <Sidebar />
