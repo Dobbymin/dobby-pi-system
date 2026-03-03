@@ -16,3 +16,18 @@ services:
     ports:
       - '8080:8080'
     restart: unless-stopped
+    depends_on:
+      - database
+  database:
+    image: mariadb:latest
+    container_name: dobby-db-system
+    restart: always
+    env_file:
+      - .env
+    environment:
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MARIADB_DATABASE: ${DB_NAME}
+    ports:
+      - "${DB_PORT}:3306"
+    volumes:
+      - ./data/mariadb:/var/lib/mysql
