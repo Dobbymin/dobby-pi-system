@@ -10,9 +10,9 @@ export default defineConfig([
     ignores: ['dist', 'node_modules', 'public', '**/*.config.js', '**/*.config.mjs', '**/*.config.cjs'],
     plugins: { js, prettier },
     extends: ['js/recommended', prettierConfig],
-    languageOptions: { globals: globals.browser },
+    languageOptions: { globals: globals.node },
     rules: {
-      'no-console': 'warn',
+      'no-console': ['warn', { allow: ['log', 'error', 'warn'] }],
       'no-undef': 'off',
       eqeqeq: 'warn',
       'no-invalid-this': 'error',
