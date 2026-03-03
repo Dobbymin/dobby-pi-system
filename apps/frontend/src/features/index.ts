@@ -5,6 +5,6 @@ export * from "./main";
 export * from "./network-management";
 export * from "./process-management";
 export * from "./service-control";
-export * from "./storage-management";
+export * from "./storage";
 export * from "./system-metrics";
 export * from "./user-management";
