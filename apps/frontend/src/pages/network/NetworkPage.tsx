@@ -6,7 +6,7 @@ export default function NetworkPage() {
   return (
     <div className='flex flex-col gap-6 p-6'>
       <div className='flex items-center gap-3'>
-        <Network className='size-6 text-primary' />
+        <Network className='text-primary size-6' />
         <div>
           <h1 className='text-xl font-bold text-slate-900 dark:text-white'>네트워크 관리</h1>
           <p className='text-sm text-slate-500 dark:text-slate-400'>

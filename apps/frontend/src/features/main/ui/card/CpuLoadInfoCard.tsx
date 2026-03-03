@@ -27,7 +27,7 @@ export const CpuLoadInfoCard = ({ cpuUsage }: Props) => {
 
   return (
     <Card className='relative flex flex-col items-center justify-center lg:col-span-4'>
-      <h3 className='absolute left-6 top-6 text-sm font-medium uppercase tracking-wider text-slate-500 dark:text-slate-400'>
+      <h3 className='absolute top-6 left-6 text-sm font-medium tracking-wider text-slate-500 uppercase dark:text-slate-400'>
         CPU Load
       </h3>
       <div className='relative mt-4 size-40'>
@@ -43,7 +43,7 @@ export const CpuLoadInfoCard = ({ cpuUsage }: Props) => {
             <RadialBar dataKey='value' background={false} isAnimationActive={true} />
           </RadialBarChart>
         </ChartContainer>
-        <div className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform text-center'>
+        <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform text-center'>
           <span className='block text-3xl font-bold text-slate-900 dark:text-white'>
             {cpuUsage !== undefined ? `${cpuUsage}%` : "—"}
           </span>
