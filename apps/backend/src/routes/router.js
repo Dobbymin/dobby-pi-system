@@ -2,6 +2,8 @@ import express from 'express';
 
 import { serviceController } from '../apis/services/controller/service.controller.js';
 import { validateGetServicesQuery, validateServiceName } from '../apis/services/validator/service.validator.js';
+import { storageController } from '../apis/storage/controller/storage.controller.js';
+import { validateDeviceParam } from '../apis/storage/validator/storage.validator.js';
 import { systemController } from '../apis/system/controller/system.controller.js';
 
 export const router = (app) => {
@@ -28,6 +30,12 @@ export const router = (app) => {
 
   apiRouter.post('/services/timers/:name/enable', validateServiceName, serviceController.enableTimer);
   apiRouter.post('/services/timers/:name/disable', validateServiceName, serviceController.disableTimer);
+
+  // ── Storage ──────────────────────────────────────────────
+  apiRouter.get('/storage/partitions', storageController.getPartitions);
+  apiRouter.get('/storage/smart', storageController.getSmartInfo);
+  apiRouter.get('/storage/partitions/:device', validateDeviceParam, storageController.getPartitionByDevice);
+  apiRouter.get('/storage/smart/:device', validateDeviceParam, storageController.getSmartInfoByDevice);
 
   app.use('/api', apiRouter);
 };
