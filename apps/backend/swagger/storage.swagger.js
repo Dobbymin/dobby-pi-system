@@ -119,7 +119,7 @@
  *         required: true
  *         schema:
  *           type: string
- *         description: URL 인코딩된 장치명 (예: %2Fdev%2Fsda1)
+ *         description: "URL 인코딩된 장치명 (예: %2Fdev%2Fsda1)"
  *         example: "%2Fdev%2Fsda1"
  *     responses:
  *       200:
@@ -173,7 +173,7 @@
  *         required: true
  *         schema:
  *           type: string
- *         description: URL 인코딩된 장치명 (예: %2Fdev%2Fsda)
+ *         description: "URL 인코딩된 장치명 (예: %2Fdev%2Fsda)"
  *         example: "%2Fdev%2Fsda"
  *     responses:
  *       200:
